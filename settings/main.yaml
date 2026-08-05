@@ -1,0 +1,65 @@
+seed: 42
+seeds: [42, 1024, 2048, 3407, 7, 13, 73, 1729, 31415, 271828, 161803, 6022, 8675, 9000, 4242]
+data:
+  manifest: prepared/manifest.csv
+  cohorts: [TCGA-GBM, TCGA-LGG, Visium-GBM, CPTAC-GBM, CGGA]
+  folds: 5
+  train_fraction: 0.6
+  validation_fraction: 0.2
+  test_fraction: 0.2
+  visium_radius_microns: 200.0
+  xenium_radius_microns: 50.0
+  patch_magnification: 20
+  patch_size: 224
+model:
+  patient_dim: 1024
+  clinical_dim: 12
+  clinical_hidden: 256
+  clinical_output: 128
+  histology_output: 1024
+  spatial_output: 768
+  transcript_output: 768
+  set_layers: 4
+  set_heads: 16
+  prototypes: 6
+  experts: 8
+  idh_experts: 2
+  confidence_threshold: 0.55
+  ib_beta: 0.1
+pretrain:
+  epochs: 30
+  warmup_epochs: 10
+  dropout_ramp_end: 30
+  dropout_final: 0.3
+  paired_weight: 1.0
+  pseudo_shift_weight: 0.5
+finetune:
+  epochs: 50
+optimizer:
+  name: adamw
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  batch_size: 32
+  gradient_accumulation: 1
+  gradient_clip_norm: 1.0
+  scheduler: cosine
+  precision: fp16
+distributed:
+  world_size: 8
+  backend: nccl
+loss:
+  shift: 1.0
+  clinical: 0.5
+  alignment: 0.2
+  modality: 0.3
+evaluation:
+  bootstrap_samples: 1000
+  permutation_samples: 1000
+  confidence: 0.95
+  horizons_months: [6, 12, 24, 36]
+runtime:
+  output: outputs
+  workers: 16
+  pin_memory: true
+  persistent_workers: true
+  atomic_checkpoints: true

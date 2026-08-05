@@ -1,0 +1,13 @@
+name: glioma-shift-atlas
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.11.9
+  - pytorch=2.3.0
+  - torchvision=0.18.0
+  - pytorch-cuda=12.1
+  - pip=24.0
+  - pip:
+      - -r requirements.txt

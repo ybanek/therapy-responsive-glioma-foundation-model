@@ -1,0 +1,7 @@
+TCGA-GBM	https://portal.gdc.cancer.gov/projects/TCGA-GBM	GDC data-use terms
+TCGA-LGG	https://portal.gdc.cancer.gov/projects/TCGA-LGG	GDC data-use terms
+10x Visium GBM GSE194329	https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE194329	NCBI GEO terms
+CPTAC-GBM	https://proteomic.datacommons.cancer.gov/pdc/	PDC data-use terms
+CGGA	https://www.cgga.org.cn/	CGGA data-use agreement
+IvyGAP	https://glioblastoma.alleninstitute.org/	Allen Institute terms of use
+GLASS	https://glass-consortium.org/datasets/	Synapse and GLASS terms of use
